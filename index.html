@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+
+  <title>Todo app</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="heading">
+      <h1>Todo</h1>
+      <div class="theme">
+        <img src="./assets/images/icon-moon.svg" alt="moon icon" id="themeButton">
+      </div>
+
+    </div>
+    <div class="addTodoDiv">
+      <input type="text" placeholder="Create a new todo..." id="todoInput">
+      <label for="todo" class="label">
+        <i class="fa-regular fa-circle"></i>
+        <span id="typing">Currently typing</span>
+      </label>
+    </div>
+    <div class="list">
+      <ul class="todos" id="TodoList">
+      </ul>
+      <div class="options">
+        <div class="left">
+          <span class="itemsLeft" id="itemsLeft">0</span> items left
+        </div>
+        <div class="categories">
+          <ul>
+            <li><span class="option active" data-filter="all">All</span></li>
+            <li><span class="option" data-filter="active">Active</span></li>
+            <li><span class="option" data-filter="completed">Completed</span></li>
+          </ul>
+        </div>
+        <div class="clear">
+          <span id="clear">Clear Completed
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="taskCategoriesMobile">
+      <ul>
+        <li><span class="option active" data-filter="all">All</span></li>
+        <li><span class="option" data-filter="active">Active</span></li>
+        <li><span class="option" data-filter="completed">Completed</span></li>
+      </ul>
+    </div>
+    <div class="row">
+      <span>Drag and drop to reorder list</span>
+    </div>
+
+  </div>
+
+  <script src="./js/script.js"></script>
+  <script src="./js/theme.js"></script>
+  <script src="./js/dragDrop.js"></script>
+
+</body>
+
+
+</html>

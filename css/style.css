@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+/* Global settings  */
+:root {
+  /*primary */
+  --brightBlue: hsl(220, 98%, 61%);
+  --checkBackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+  /* Light */
+  --veryLightGray: hsl(0, 0%, 98%);
+  --veryLightGrayishBlue: hsl(236, 33%, 92%);
+  --lightGrayishBlue: hsl(233, 11%, 84%);
+  --darkGrayishBlue: hsl(236, 9%, 61%);
+  --veryDarkGrayishBlue: hsl(235, 19%, 35%);
+
+  /* dark */
+  --VeryDarkBlue: hsl(235, 21%, 11%);
+--VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+--LightGrayishBlue-DarkTheme: hsl(234, 39%, 85%);
+--LightGrayishBlueHover-DarkTheme: hsl(236, 33%, 92%);
+--DarkGrayishBlue-DarkTheme: hsl(234, 11%, 52%);
+--VeryDarkGrayishBlue-DarkTheme: hsl(233, 14%, 35%);
+--VeryDarkGrayishBlue-DarkTheme: hsl(237, 14%, 26%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: url("../assets/images/bg-desktop-light.jpg") no-repeat top center var(--veryLightGray);
+  transition: background .2s linear;
+  font-size: 18px;
+}
+
+/* container */
+
+.container {
+  width: 450px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 60px;
+ 
+}
+
+/* heading */
+
+.heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading h1 {
+  color: var(--veryLightGray);
+  letter-spacing: .1em;
+  font-size: 35.16px;
+  text-transform: uppercase;
+}
+
+.heading .theme .checkboxTheme {
+  display: none;
+}
+
+.heading .theme img {
+  cursor: pointer;
+}
+
+
+/* input Div */
+
+.addTodoDiv {
+  width: 100%;
+  margin: 30px 0;
+  position: relative;
+  caret-color: var(--brightBlue);
+  background: var(--veryLightGray);
+  border-radius: 6px;
+  transition: background .2s linear;
+}
+
+
+.addTodoDiv #todoInput {
+  width: 100%;
+  padding: 18px 18px 18px 60px ;
+  border-radius: 7px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  background: var(--veryLightGray);
+  color: var(--darkGrayishBlue);
+}
+
+.addTodoDiv .label {
+  position: absolute;
+  left: 30px;
+  top: 17px;
+}
+
+.addTodoDiv .label i {
+  color: var(--lightGrayishBlue);
+  margin-right: 7px;
+}
+
+.addTodoDiv #typing {
+  color: var(--darkGrayishBlue);
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all .3s linear;
+}
+
+.addTodoDiv.typing #typing {
+  display: inline-block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.addTodoDiv.typing #todoInput {
+  padding: 18px 18px 18px 200px ;
+}
+
+/* list */
+
+.list {
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  
+}
+
+.list .todos li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background: var(--veryLightGray);
+  border-bottom: 1px solid var(--lightGrayishBlue);
+  padding: 18px 30px;
+  min-height: 60px;
+}
+
+.list .todos li:first-of-type {
+  border-radius: 6px 6px 0 0;
+}
+
+
+.list .todos li .fa-circle {
+  color: var(--veryLightGrayishBlue);
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.list .todos li .fa-circle:hover {
+  background-color: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+}
+
+.list .todos li span {
+  color: var(--veryDarkGrayishBlue);
+  cursor: pointer;
+}
+
+.list .todos li span.completed {
+  text-decoration: line-through;
+  color: var(--LightGrayishBlue-DarkTheme);
+}
+
+.list .todos li i.fa-circle-check {
+  color: hsl(280, 87%, 65%);
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.list .todos li .close {
+  margin-left: auto;
+  cursor: pointer;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.list .todos li:hover > .close {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.list .todos li.draggable.dragging {
+  opacity: .5;
+}
+
+/* options */
+
+.options {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--veryLightGray);
+  border-radius: 0 0 6px 6px;
+  padding: 18px 30px;
+  font-size: 14px;
+}
+
+.left {
+  color: var(--darkGrayishBlue);
+}
+
+.options .categories {
+  margin: 0 30px;
+}
+
+.options .categories ul li {
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.options .categories ul li span {
+  color: var(--darkGrayishBlue);
+  cursor: pointer;
+}
+
+.options .categories ul li span:hover {
+  color: var(--veryDarkGrayishBlue);
+}
+
+.options .categories ul li span.active {
+  color: var(--brightBlue);
+  cursor: default;
+}
+
+.options .clear span {
+  color: var(--darkGrayishBlue);
+  cursor: pointer;
+}
+
+.options .clear span:hover {
+  color: var(--veryDarkGrayishBlue);
+  cursor: pointer;
+}
+
+.taskCategoriesMobile {
+  display: none;
+}
+
+/* footer span */
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10% 0;
+}
+
+.row span {
+  font-size: 14px;
+  color: var(--veryDarkGrayishBlue);
+}
+
+/* Dark theme */
+
+body.dark {
+  background: url("../assets/images/bg-desktop-dark.jpg") no-repeat top center var(--VeryDarkBlue);
+}
+
+body.dark .addTodoDiv .fa-circle {
+  color: var(--DarkGrayishBlue-DarkTheme);
+}
+
+body.dark .addTodoDiv #todoInput {
+  background: var(--VeryDarkDesaturatedBlue);
+  color: #fff;
+  border-radius: 5px;
+}
+
+body.dark .addTodoDiv.typing #typing {
+  color: var(--LightGrayishBlue-DarkTheme);
+}
+
+body.dark .list .todos li { 
+  background: var(--VeryDarkDesaturatedBlue);
+  border-bottom: 1px solid var(--VeryDarkGrayishBlue);
+}
+
+body.dark .list .todos li span { 
+  color: var(--LightGrayishBlue-DarkTheme);
+}
+
+body.dark .list .todos li span.completed {
+  color: var(--DarkGrayishBlue-DarkTheme);
+}
+
+body.dark .list .todos li span:hover { 
+  color: var(--LightGrayishBlueHover-DarkTheme);
+}
+
+body.dark .list .todos li i {
+  color: var(--DarkGrayishBlue-DarkTheme);
+}
+
+body.dark .options {
+  background: var(--VeryDarkDesaturatedBlue);
+}
+
+body.dark .taskCategoriesMobile {
+  background: var(--VeryDarkDesaturatedBlue);
+}
+
+body.dark .row span {
+  color: var(--DarkGrayishBlue-DarkTheme);
+}
+
+@media (max-width: 600px) {
+
+  /* container */
+
+.container {
+  max-width: 450px;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 15px;
+}
+
+/* input div */
+
+.addTodoDiv.typing #todoInput {
+  padding: 18px 18px 18px 60px ;
+}
+
+.addTodoDiv.typing #typing {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.categories {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.taskCategoriesMobile {
+  display: block;
+  margin: 12px;
+  background: var(--veryLightGray);
+  width: 100%;
+  padding: 18px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.taskCategoriesMobile ul li {
+  display: inline-block;
+  margin-right: 7px;
+}
+
+.taskCategoriesMobile ul li span {
+  color: var(--veryDarkGrayishBlue);
+  cursor: pointer;
+}
+
+.taskCategoriesMobile li span.active {
+  color: var(--brightBlue);
+  cursor: default;
+}
+
+}
