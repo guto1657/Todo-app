@@ -2,6 +2,10 @@
 
 This project is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
+## screenshot
+
+![todoapp](https://user-images.githubusercontent.com/70277574/155792264-06925327-ab19-43af-9b65-23630563fe4f.png)
+
 ## The challenge
 
 Users should be able to:
