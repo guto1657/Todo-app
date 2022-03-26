@@ -121,6 +121,16 @@ class DB {
     })
   }
 
+  // it edits the text of an specific element
+  editTaskText(id, text) {
+
+    let taskToBeEdited = JSON.parse(localStorage.getItem(id))
+
+    taskToBeEdited.name = text
+
+    localStorage.setItem(id, JSON.stringify(taskToBeEdited))
+  }
+
 }
 
 const db = new DB
@@ -147,7 +157,6 @@ input.addEventListener('keyup', (e) => {
 function addToDo() {
   const name = input.value
   const task = new toDo(name)
-  console.log(task)
   if (task.checkIfObjectIsValid()) {
     db.saveItem(task)
     input.value = ''
@@ -210,6 +219,47 @@ function ShowToDos(array = [], filter = false) {
       let span = document.createElement('span')
       span.innerHTML = `${todo.name}`
 
+      // edit span text on click
+      span.addEventListener('click', (e) => {
+        e.target.classList.add('editable')
+        e.target.contentEditable = true
+        e.target.focus()
+
+        moveCursorAtTheEnd(e.target)
+
+        // it gets the span parentElement then it adds the class hidden to the close icon 
+        e.target.parentElement.querySelector('.close').classList.add('hidden')
+
+
+        // checks whether the span tag contains the editable classname and if editable icon already exist
+        if (e.target.classList.contains('editable') && !li.querySelector('i.editIcon')) {
+          // create the editable icon
+          let editableIcon = document.createElement('i')
+          editableIcon.className = 'editIcon fa-solid fa-pen-to-square'
+
+          //listen to when the user click on the icon
+          editableIcon.addEventListener('click', () => {
+            // it adds the new text to the selected task
+            db.editTaskText(todo.id, e.target.innerHTML)
+
+            //removes the editable class and editable attribute of the span
+            e.target.classList.remove('editable')
+            e.target.contentEditable = false
+
+            //removes editable icon of list
+            li.querySelector('i.editIcon').removeChild
+
+            //removes the class hidden of the close icon
+            document.querySelector('.close').classList.remove('hidden')
+
+            ShowToDos()
+          })
+
+          li.appendChild(editableIcon)
+        }
+
+      })
+
       if (todo.status == 'completed') {
         span.classList.add('completed')
       }
@@ -231,6 +281,7 @@ function ShowToDos(array = [], filter = false) {
       li.appendChild(close)
 
       list.appendChild(li)
+
     }
 
   })
@@ -367,4 +418,19 @@ function getDragAfterElement(container, y) {
     }
 
   }, { offset: Number.NEGATIVE_INFINITY }).element
+}
+
+/* function to sets the cursor to the end of the line when span is being edit */
+function moveCursorAtTheEnd(contenteditable) {
+  let selection = document.getSelection();
+  let range = document.createRange();
+
+  if (contenteditable.lastChild.nodeType == 3) {
+    range.setStart(contenteditable.lastChild, contenteditable.lastChild.length);
+  } else {
+    range.setStart(contenteditable, contenteditable.childNodes.length);
+  }
+  selection.removeAllRanges();
+  selection.addRange(range);
+
 }
