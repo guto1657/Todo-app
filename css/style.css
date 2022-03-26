@@ -21,6 +21,8 @@
 --DarkGrayishBlue-DarkTheme: hsl(234, 11%, 52%);
 --VeryDarkGrayishBlue-DarkTheme: hsl(233, 14%, 35%);
 --VeryDarkGrayishBlue-DarkTheme: hsl(237, 14%, 26%);
+
+  --editableColor: #02ca66;
 }
 
 * {
@@ -144,7 +146,6 @@ body {
 .list {
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  
 }
 
 .list .todos li {
@@ -156,26 +157,29 @@ body {
   border-bottom: 1px solid var(--lightGrayishBlue);
   padding: 18px 30px;
   min-height: 60px;
+  transition: .3s all ease-in-out;
 }
 
 .list .todos li:first-of-type {
   border-radius: 6px 6px 0 0;
 }
 
-
 .list .todos li .fa-circle {
   color: var(--veryLightGrayishBlue);
   cursor: pointer;
   margin-right: 15px;
+  transition: .3s all ease-in-out;
 }
 
 .list .todos li .fa-circle:hover {
   background-color: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  transition: .3s all ease-in-out;
 }
 
 .list .todos li span {
   color: var(--veryDarkGrayishBlue);
   cursor: pointer;
+  outline: none;
 }
 
 .list .todos li span.completed {
@@ -201,6 +205,14 @@ body {
   display: block;
   visibility: visible;
   opacity: 1;
+  transition: .3s all ease-in-out;
+}
+
+.list .todos li:hover > .close.hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s all ease-in-out;
 }
 
 .list .todos li.draggable.dragging {
@@ -236,10 +248,12 @@ body {
 .options .categories ul li span {
   color: var(--darkGrayishBlue);
   cursor: pointer;
+  transition: .2s all ease-in-out;
 }
 
 .options .categories ul li span:hover {
   color: var(--veryDarkGrayishBlue);
+  transition: .2s all ease-in-out;
 }
 
 .options .categories ul li span.active {
@@ -250,11 +264,13 @@ body {
 .options .clear span {
   color: var(--darkGrayishBlue);
   cursor: pointer;
+  transition: .2s all ease-in-out;
 }
 
 .options .clear span:hover {
   color: var(--veryDarkGrayishBlue);
   cursor: pointer;
+  transition: .2s all ease-in-out;
 }
 
 .taskCategoriesMobile {
@@ -275,6 +291,15 @@ body {
   font-size: 14px;
   color: var(--veryDarkGrayishBlue);
 }
+
+/* editable icon */
+
+.editIcon {
+  color: var(--editableColor);
+  margin-left: auto;
+  cursor: pointer;
+}
+
 
 /* Dark theme */
 
@@ -303,6 +328,7 @@ body.dark .list .todos li {
 
 body.dark .list .todos li span { 
   color: var(--LightGrayishBlue-DarkTheme);
+  transition: .3s all ease-in-out;
 }
 
 body.dark .list .todos li span.completed {
@@ -311,6 +337,7 @@ body.dark .list .todos li span.completed {
 
 body.dark .list .todos li span:hover { 
   color: var(--LightGrayishBlueHover-DarkTheme);
+  transition: .3s all ease-in-out;
 }
 
 body.dark .list .todos li i {
