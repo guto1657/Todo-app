@@ -222,8 +222,7 @@ function ShowToDos(array = [], filter = false) {
       // edit span text on click
       span.addEventListener('click', (e) => {
         e.target.classList.add('editable')
-        e.target.contentEditable = true
-        e.target.focus()
+        e.target.setAttribute('contentEditable', true)
 
         moveCursorAtTheEnd(e.target)
 
